@@ -98,9 +98,6 @@ export const Graph = () => {
       if (typeof label === "undefined") return;
       const fontSize = 12 / globalScale;
       ctx.font = `${fontSize}px ${montserrat.style.fontFamily}`;
-      console.log(ctx.font);
-
-      const textWidth = ctx.measureText(label).width;
 
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
@@ -111,10 +108,8 @@ export const Graph = () => {
         .find(([cond]) => cond)
         ?.at(1);
       ctx.fillText(label, node.x, node.y);
-
-      // node.__bckgDimensions = bckgDimensions; // to re-use in nodePointerAreaPaint
     },
-    [hoverNode]
+    [highlightNodes, hoverNode]
   );
 
   const updateHighlight = () => {
