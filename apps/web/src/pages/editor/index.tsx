@@ -1,8 +1,8 @@
 import { Button } from "ui";
-import { Graph } from "../../components/Graph";
 import { useMachine } from "@xstate/react";
 import { editorMachine } from "./editor.state";
 import { NodeModal } from "./ModeModal";
+import { ForceGraph } from "../../components/ForceGraph";
 
 export default function Web() {
   const [state, send] = useMachine(editorMachine);
@@ -11,7 +11,7 @@ export default function Web() {
   return (
     <div>
       <Button onClick={() => send("CLICK_CANVAS_SPACE")}>Create node</Button>
-      <Graph />
+      <ForceGraph />
       <NodeModal
         open={state.matches("node-modal")}
         close={() => send("CLOSE")}
